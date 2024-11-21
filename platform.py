@@ -1,5 +1,7 @@
 # Copyright 2014-present PlatformIO <contact@platformio.org>
 #
+# Modifications for CVA6 Copyright Capabilities Limited
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -17,7 +19,7 @@ from os.path import join
 from platformio.public import PlatformBase
 
 
-class ShaktiPlatform(PlatformBase):
+class Cva6Platform(PlatformBase):
 
     def get_boards(self, id_=None):
         result = super().get_boards(id_)
@@ -32,7 +34,7 @@ class ShaktiPlatform(PlatformBase):
 
     def _add_dynamic_options(self, board):
         debug = board.manifest.get("debug", {})
-        debug_tools = ("jlink", "ftdi")
+        debug_tools = ("ftdi")
 
         upload_protocol = board.manifest.get("upload", {}).get("protocol")
         upload_protocols = board.manifest.get("upload", {}).get("protocols", [])
@@ -48,7 +50,7 @@ class ShaktiPlatform(PlatformBase):
             server_args = [
                 "-f",
                 join(
-                    self.get_package_dir("framework-shakti-sdk") or "", "bsp",
+                    self.get_package_dir("framework-cva6-sdk") or "", "bsp",
                     "third_party", board.id, "%s.cfg" % link)
             ]
 

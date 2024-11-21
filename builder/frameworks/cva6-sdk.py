@@ -1,5 +1,7 @@
 # Copyright 2019-present PlatformIO <contact@platformio.org>
 #
+# Modifications for CVA6 Copyright 2024 Capabilities Limited
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,11 +15,9 @@
 # limitations under the License.
 
 """
-Shakti SDK
+CVA6 SDK
 
-Open Source Software for Developing on the Shakti Platform
-
-https://gitlab.com/shaktiproject/software/shakti-sdk
+Open Source Software for Developing on the CVA6 Platform
 """
 
 from os import listdir
@@ -27,11 +27,14 @@ from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
 
-FRAMEWORK_DIR = env.PioPlatform().get_package_dir("framework-shakti-sdk")
+print("Finding framework")
+FRAMEWORK_DIR = env.PioPlatform().get_package_dir("framework-cva6-sdk")
+print(f"found {FRAMEWORK_DIR}")
 assert FRAMEWORK_DIR and isdir(FRAMEWORK_DIR)
 
 
 def is_valid_target(target):
+    print(FRAMEWORK_DIR)
     target_dir = join(FRAMEWORK_DIR, "bsp", "third_party", target)
     return isdir(target_dir)
 
@@ -74,7 +77,7 @@ if not is_valid_target(target):
     env.Exit(1)
 
 if not env.BoardConfig().get("build.ldscript", ""):
-    env.Replace(LDSCRIPT_PATH=env.BoardConfig().get("build.shakti-sdk.ldscript", ""))
+    env.Replace(LDSCRIPT_PATH=env.BoardConfig().get("build.cva6-sdk.ldscript", ""))
 
 #
 # Target: Build core BSP libraries
