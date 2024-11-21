@@ -1,5 +1,7 @@
 # Copyright 2014-present PlatformIO <contact@platformio.org>
 #
+# Modifications for CVA6 Copyright 2024 Capabilities Limited
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -148,8 +150,7 @@ elif upload_protocol in debug_tools:
     openocd_args.extend(
         debug_tools.get(upload_protocol).get("server").get("arguments", []))
     openocd_args.extend([
-        "-c", "init; load_image {$SOURCE} %s;resume 0x80000000;shutdown" %
-        board_config.get("upload").get("flash_start", "")
+        "-c", "init; load_image {$SOURCE};resume 0x80000080;shutdown"
     ])
     env.Replace(
         UPLOADER="openocd",
