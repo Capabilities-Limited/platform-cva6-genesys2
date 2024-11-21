@@ -1,29 +1,25 @@
 {
-  "name": "shakti",
-  "title": "Shakti",
-  "description": "Shakti is an open-source initiative by the RISE group at IIT-Madras, which is not only building open source, production grade processors, but also associated components like interconnect fabrics, verification tools, storage controllers, peripheral IPs and SOC tools.",
-  "homepage": "https://shakti.org.in/",
+  "name": "cva6",
+  "title": "CVA6",
+  "description": "CVA6 PlatformIO platform",
+  "homepage": "",
   "license": "Apache-2.0",
   "keywords": [
       "dev-platform",
-      "Shakti",
+      "CVA6",
       "RISC-V"
   ],
   "engines": {
     "platformio": "^6"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/platformio/platform-shakti.git"
-  },
-  "version": "1.2.0",
+  "version": "0.0.0",
   "frameworks": {
-    "shakti-sdk": {
-      "package": "framework-shakti-sdk",
-      "script": "builder/frameworks/shakti-sdk.py",
-      "description": "A software development kit for developing applications on Shakti class of processors",
-      "homepage": "https://gitlab.com/shaktiproject/software/shakti-sdk",
-      "title": "Shakti SDK"
+    "cva6-sdk": {
+      "package": "framework-cva6-sdk",
+      "script": "builder/frameworks/cva6-sdk.py",
+      "description": "A software development kit for developing applications on CVA6",
+      "homepage": "",
+      "title": "CVA6 SDK"
     }
   },
   "packages": {
@@ -32,22 +28,16 @@
       "owner": "platformio",
       "version": "~1.80300.0"
     },
-    "framework-shakti-sdk": {
+    "framework-cva6-sdk": {
       "type": "framework",
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.5880320115"
+      "version": "0.0.0"
     },
     "tool-openocd-riscv": {
-      "optional": true,
+      "optional": false,
       "type": "uploader",
       "owner": "platformio",
       "version": "~2.1000.0"
-    },
-    "tool-jlink": {
-      "type": "uploader",
-      "optional": true,
-      "owner": "platformio",
-      "version": "^1.63208.0"
     },
     "tool-qemu-riscv": {
       "type": "debugger",
