@@ -1,0 +1,38 @@
+{
+  "build": {
+    "extra_flags": "-D GENESYS2",
+    "f_cpu": "50000000L",
+    "hwids": [
+      [
+        "0x002b",
+        "0x15ba"
+      ]
+    ],
+    "mabi": "lp64d",
+    "march": "rv64gc",
+    "mcmodel": "medany",
+    "cva6-sdk":{
+      "ldscript": "link.ld"
+    }
+  },
+  "debug": {
+    "onboard_tools": [
+      "ftdi"
+    ],
+    "svd_path": "genesys2.svd"
+  },
+  "frameworks": [
+    "cva6-sdk"
+  ],
+  "name": "Genesys 2 Kintex-7 FPGA Development Board",
+  "upload": {
+    "maximum_ram_size": 1073741824,
+    "maximum_size": 0,
+    "protocol": "ftdi",
+    "protocols": [
+      "ftdi"
+    ]
+  },
+  "url": "https://digilent.com/reference/programmable-logic/genesys-2/start",
+  "vendor": "Xilinx"
+}
