@@ -50,8 +50,8 @@ class Cva6Platform(PlatformBase):
             server_args = [
                 "-f",
                 join(
-                    self.get_package_dir("framework-cva6-sdk") or "", "bsp",
-                    "third_party", board.id, "%s.cfg" % link)
+                    self.get_package_dir("framework-cva6-sdk") or "",
+                    "config", board.id, "%s.cfg" % link)
             ]
 
             debug['tools'][link] = {

@@ -28,14 +28,14 @@ from SCons.Script import DefaultEnvironment
 env = DefaultEnvironment()
 
 print("Finding framework")
-FRAMEWORK_DIR = env.PioPlatform().get_package_dir("framework-cva6-sdk")
+FRAMEWORK_DIR = env.PioPlatform().get_package_dir("framework-cva6-genesys2")
 print(f"found {FRAMEWORK_DIR}")
 assert FRAMEWORK_DIR and isdir(FRAMEWORK_DIR)
 
 
 def is_valid_target(target):
     print(FRAMEWORK_DIR)
-    target_dir = join(FRAMEWORK_DIR, "bsp", "third_party", target)
+    target_dir = join(FRAMEWORK_DIR, "config", target)
     return isdir(target_dir)
 
 
@@ -59,12 +59,11 @@ env.Append(
     ],
 
     CPPPATH=[
-        join(FRAMEWORK_DIR, "bsp", "include"),
-        join(FRAMEWORK_DIR, "bsp", "third_party", target)
+        join(FRAMEWORK_DIR, "cva6-baremetal-bsp", "bsp", "include")
     ],
 
     LIBPATH=[
-        join(FRAMEWORK_DIR, "bsp", "third_party", target)
+        join(FRAMEWORK_DIR, "cva6-baremetal-bsp", "bsp", "config")
     ],
 
     LINKFLAGS=[
@@ -85,31 +84,18 @@ if not env.BoardConfig().get("build.ldscript", ""):
 
 libs = []
 
-for driver in listdir(join(FRAMEWORK_DIR, "bsp", "drivers")):
+for driver in listdir(join(FRAMEWORK_DIR, "cva6-baremetal-bsp", "bsp", "drivers")):
     libs.append(
         env.BuildLibrary(
-            join("$BUILD_DIR", "bsp", "drivers", driver),
-            join(FRAMEWORK_DIR, "bsp", "drivers", driver))
+            join("$BUILD_DIR", "cva6-baremetal-bsp", "bsp", "drivers", driver),
+            join(FRAMEWORK_DIR, "cva6-baremetal-bsp", "bsp", "drivers", driver))
     )
 
 libs.append(
     env.BuildLibrary(
-        join("$BUILD_DIR", "bsp", "core"),
-        join(FRAMEWORK_DIR, "bsp", "core")
+        join("$BUILD_DIR", "cva6-baremetal-bsp", "bsp", "hal"),
+        join(FRAMEWORK_DIR, "cva6-baremetal-bsp", "bsp", "hal")
     )
-)
-
-libs.append(
-    env.BuildLibrary(
-        join("$BUILD_DIR", "bsp", "libs"),
-        join(FRAMEWORK_DIR, "bsp", "libs")
-    )
-)
-
-libs.append(
-    env.BuildLibrary(
-        join("$BUILD_DIR", "bsp", "third_party", target),
-        join(FRAMEWORK_DIR, "bsp", "third_party", target))
 )
 
 env.Prepend(LIBS=libs)

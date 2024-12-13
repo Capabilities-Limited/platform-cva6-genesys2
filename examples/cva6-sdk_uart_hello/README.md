@@ -17,10 +17,10 @@ $ pio run
 $ pio run --target upload
 
 # Build specific environment
-$ pio run -e genesysii
+$ pio run -e genesys2
 
 # Upload firmware for the specific environment
-$ pio run -e genesysii --target upload
+$ pio run -e genesys2 --target upload
 
 # Clean build files
 $ pio run --target clean
