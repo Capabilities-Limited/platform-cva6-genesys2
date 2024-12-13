@@ -11,7 +11,7 @@
     "mabi": "lp64d",
     "march": "rv64gc",
     "mcmodel": "medany",
-    "cva6-sdk":{
+    "cva6-genesys2":{
       "ldscript": "link.ld"
     }
   },
@@ -22,7 +22,7 @@
     "svd_path": "genesys2.svd"
   },
   "frameworks": [
-    "cva6-sdk"
+    "cva6-genesys2"
   ],
   "name": "Genesys 2 Kintex-7 FPGA Development Board",
   "upload": {

@@ -14,8 +14,8 @@
   },
   "version": "0.0.0",
   "frameworks": {
-    "cva6-sdk": {
-      "package": "framework-cva6-sdk",
+    "cva6-genesys2": {
+      "package": "framework-cva6-genesys2",
       "script": "builder/frameworks/cva6-sdk.py",
       "description": "A software development kit for developing applications on CVA6",
       "homepage": "",
@@ -28,7 +28,7 @@
       "owner": "platformio",
       "version": "~1.80300.0"
     },
-    "framework-cva6-sdk": {
+    "framework-cva6-genesys2": {
       "type": "framework",
       "owner": "platformio",
       "version": "0.0.0"

@@ -50,7 +50,7 @@ class Cva6Platform(PlatformBase):
             server_args = [
                 "-f",
                 join(
-                    self.get_package_dir("framework-cva6-sdk") or "",
+                    self.get_package_dir("framework-cva6-genesys2") or "",
                     "config", board.id, "%s.cfg" % link)
             ]
 

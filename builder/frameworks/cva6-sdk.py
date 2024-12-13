@@ -76,7 +76,7 @@ if not is_valid_target(target):
     env.Exit(1)
 
 if not env.BoardConfig().get("build.ldscript", ""):
-    env.Replace(LDSCRIPT_PATH=env.BoardConfig().get("build.cva6-sdk.ldscript", ""))
+    env.Replace(LDSCRIPT_PATH=env.BoardConfig().get("build.cva6-genesys2.ldscript", ""))
 
 #
 # Target: Build core BSP libraries
