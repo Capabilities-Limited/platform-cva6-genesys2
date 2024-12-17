@@ -3,11 +3,13 @@
 #include <stdint.h>
 #include "uart.h"
 #include "gpio.h"
-
-#define S_IN_NS 1000000000
+#include <unistd.h>
 
 int main(void)
   {
+     // Setup time constants for wait requests
+     useconds_t ONE_SEC = 1000000;
+
      // Setup UART
      UART_init(&g_uart_0,
              UART_115200_BAUD,
@@ -23,7 +25,7 @@ int main(void)
         if (rx_n > 0 && recv[0] == 's') {
           break;
         }
-        nanosleep(S_IN_NS);
+        usleep(ONE_SEC);
      }
 
      // Print loop
@@ -36,7 +38,7 @@ int main(void)
         // Access switches and LEDs with GPIO
         set_leds(get_switches());
 
-        nanosleep(S_IN_NS);
+        usleep(ONE_SEC);
      }
 
      return(0);
